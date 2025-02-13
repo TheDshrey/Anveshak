@@ -12,7 +12,7 @@ export default function Dashboard() {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
       <TouchableOpacity onPress={() => router.push("../profile")}>
-          <Avatar.Icon size={50} icon="account" style={styles.avatar} />
+          <Avatar.Icon size={65} icon="account" style={styles.avatar} />
         </TouchableOpacity>
         <Text style={styles.username}>user</Text>
         <IconButton
@@ -71,7 +71,7 @@ export default function Dashboard() {
       </View>
 
       <Text style={styles.footer}>
-        An initiative by IIT Ropar Students {"\n"} 
+        An initiative by students of IIT Ropar{"\n"} 
       </Text>
     </ScrollView>
   );
