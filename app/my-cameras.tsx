@@ -17,8 +17,7 @@ import {
   SegmentedButtons,
 } from "react-native-paper";
 import { useRouter } from "expo-router";
-import DateTimePicker from '@react-native-community/datetimepicker';
-
+import DateTimePicker from "@react-native-community/datetimepicker";
 import {
   collection,
   getDocs,
@@ -75,9 +74,8 @@ export default function MyCameras() {
     "Dome Camera",
     "Bullet Camera",
     "PTZ Camera",
+    "C-Mount Camera",
     "Infrared/Night Vision Camera",
-    "Wireless Camera",
-    "4K Camera",
     "Other",
   ];
 
