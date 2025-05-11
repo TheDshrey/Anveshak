@@ -3,6 +3,7 @@ import {
   View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ActivityIndicator 
 } from "react-native";
 import { Button, Avatar } from "react-native-paper";
+import DropDownPicker from "react-native-dropdown-picker";
 import { useRouter } from "expo-router";
 import * as Location from "expo-location";
 import { collection, addDoc } from "firebase/firestore";
@@ -14,13 +15,25 @@ export default function AddCamera() {
   const [ownerName, setOwnerName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [deviceName, setDeviceName] = useState("");
-  const [deviceType, setDeviceType] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [organization, setOrganization] = useState("");
   const [loading, setLoading] = useState(false);
+
+  //device types
+  
+const [open, setOpen] = useState(false);
+const [deviceType, setDeviceType] = useState(null);
+const [items, setItems] = useState([
+  { label: "Dome Camera", value: "dome" },
+  { label: "Bullet Camera", value: "bullet" },
+  { label: "C-Mount Camera", value: "cmount" },
+  { label: "PTZ Camera", value: "ptz" },
+  { label: "Other", value: "oth" },
+]);
+
 
   // 📍 Get Current Location
   const getLocation = async () => {
@@ -96,7 +109,17 @@ export default function AddCamera() {
       <TextInput style={styles.input} placeholder="CCTV Owner Phone Number" placeholderTextColor="#aaa" value={phoneNumber} onChangeText={setPhoneNumber} keyboardType="phone-pad" />
 
       <TextInput style={styles.input} placeholder="CCTV Device Name" placeholderTextColor="#aaa" value={deviceName} onChangeText={setDeviceName} />
-      <TextInput style={styles.input} placeholder="CCTV Device Type" placeholderTextColor="#aaa" value={deviceType} onChangeText={setDeviceType} />
+      
+      <DropDownPicker
+      open={open}
+      value={deviceType}
+      items={items}
+      setOpen={setOpen}
+      setValue={setDeviceType}
+      setItems={setItems}
+      placeholder="Select CCTV Type"
+      style={{ marginBottom: 12 }}
+      />
 
       {/* 📍 GPS Coordinates */}
       <View style={styles.coordinatesContainer}>
